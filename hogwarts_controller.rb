@@ -1,6 +1,7 @@
 require('sinatra')
 require('sinatra/reloader')
 require_relative('./models/student.rb')
+require_relative('./models/house.rb')
 also_reload('./models/*')
 
 get '/students' do
@@ -9,6 +10,7 @@ get '/students' do
 end
 
 get '/students/new' do
+  @houses = House.all()
   erb(:new)
 end
 
@@ -21,4 +23,9 @@ end
 get '/students/:id' do
   @student = Student.find(params[:id])
   erb(:show)
+end
+
+get '/houses' do
+  @houses = House.all()
+  erb(:'houses/index')
 end

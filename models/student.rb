@@ -25,7 +25,7 @@ class Student
     @id = SqlRunner.run(sql, values).first['id'].to_i
   end
 
-  def house()
+  def my_house()
     sql = "SELECT * FROM houses
     WHERE id = $1"
     values = [@house]
